@@ -1,0 +1,15 @@
+<header>Accueil</header>
+
+<section>
+    <div id="maison">
+        <div id ="centrer">
+            <a *ngFor="let zone of zones" href="" [routerLink]="['/piece', zone.id]" >{{zone.name}}</a> 
+        </div>
+        <div class="scrollbar" id="style-15">
+            <div class="force-overflow"></div>
+          </div>
+    </div>
+    <div id="jardin">
+        <a href="" routerLink="/jardin">Jardin</a>
+    </div>
+</section>

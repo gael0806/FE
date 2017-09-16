@@ -1,0 +1,8 @@
+<section id="zone_list" *ngIf="zones">
+        <app-zone *ngFor="let zone of zones" 
+                [idzone]="zone.id" 
+                [name]="zone.name"
+                [description]="zone.description"
+                [dispositifs]="zone.dispositifs"
+        ></app-zone>
+</section>

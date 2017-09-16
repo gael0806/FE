@@ -1,0 +1,81 @@
+<div id="mainmateriel">
+    <div id="ajoutmateriel">
+        <h3>Configuration du matériel </h3>
+        <input type="button" class="btn" value="Ajouter un arduino" (click)="AddArduino()">
+    </div>
+    <div id="parametresmateriel">
+        <!--Afficher la liste des utilisateurs         -->
+        <div class="materiel select" [draggable] *ngFor="let item of materiels; index as i" [dragClass]="'active'" [dragData]="item" [dragScope]="'delete'"
+            [dragEnabled]="dragEnabled" (click)="lgModal.show(); transmitItemName($event,item,i)">
+            <div> <img src="/assets/images/arduino.png" alt="user"> </div>
+            <div><span *ngIf="item.name ==''">Arduino: {{i+1}}</span> <span *ngIf="item.name !==''"> {{item.name}}</span></div>
+        </div>
+
+
+    </div>
+
+    <!--Supprimer un arduino -->
+    <div class="container">
+        <div class="row" *ngIf="materiels.length>=1">
+            <div class="col-sm-9"></div>
+            <div class="col-sm-3">
+                <div class="card card-inverse card-primary mb-3 text-center" droppable [dragHintClass]="'drag-hint-scale'" [dragOverClass]="'bg-danger'"
+                    [dropScope]="'delete'" (onDrop)="onDeleteDrop($event)">
+                    <div class="card-block">
+                        <blockquote class="card-blockquote">
+                            <h4 class="card-title"><i class="fa fa-trash" aria-hidden="true"></i> Déposer pour supprimer</h4>
+                            <p class="card-text">Déposer un élément ici pour le supprimer</p>
+                        </blockquote>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!-- Configurer les utilisateurs -->
+<div bsModal #lgModal="bs-modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title pull-left">Configuration du matériel</h4>
+                <button type="button" class="close pull-right" (click)="lgModal.hide(); Annuler()" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+            </div>
+            <div class="modal-body">
+                <div>
+                    <form (ngSubmit)="register(userForm.value)" #userForm="ngForm">
+                        <div id="titre">
+                            Configuration de l'Arduino: {{selectedArduino.name}}
+                        </div>
+                        <div>
+                            <label> Nom </label>
+                            <input class="inputlogin" type="text" name="name" [(ngModel)]="selectedArduino.name">
+                        </div>
+                        <div>
+                            <label> Adresse IP </label>
+                            <input class="inputlogin" type="text" name="ip" [(ngModel)]="selectedArduino.ip">
+                        </div>
+                        <div>
+                            <label><input type="button" class="select btn" value="Ajouter des pins" (click)="AddPin()"></label>
+                            <div  *ngFor="let item of selectedArduino.myPins; index as j">
+                                <span> Numero de pin : </span>
+                                <input type="number" min="0" [(ngModel)]="item.number" [ngModelOptions]="{standalone: true}">
+                                <span> Entrée(0)/Sortie(1) :  </span>
+                                <input type="number" min="0" max="1" [(ngModel)]="item.inOut" [ngModelOptions]="{standalone: true}">
+                                <button class="select" type="button"  (click)="supprimerPin(j)">supprimer</button>
+                            </div>
+                        </div>
+
+                        <div>
+                            <input class="select buttonform" type="submit" value="Enregistrer" (click)="lgModal.hide()">
+                            <input class="select buttonform" (click)="lgModal.hide(); Annuler()" type="button" value="Annuler">
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

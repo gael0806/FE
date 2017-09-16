@@ -1,0 +1,57 @@
+div {
+    margin-top: 15px;
+    margin-bottom: 15px;
+    color: #aaa;
+    border : 1px solid black;
+
+    // arrière plan bouton
+    width: 100px;
+    height: 30px;
+    background: #333;
+    position: relative;
+    border-radius: 50px;
+    
+     &:after {   //mot off
+    content: 'OFF';
+    color: #aaa;
+    position: absolute;
+    right: 10px;
+    z-index: 0;
+    font: 12px/26px Arial, sans-serif;
+    font-weight: bold;
+    text-shadow: 1px 1px 0px rgba(255,255,255,.15);
+    } 
+  
+    &:before {  //mot on
+      content: 'ON';
+      color: greenyellow;
+      position: absolute;
+      left: 10px;
+      z-index: 0;
+      font: 12px/26px Arial, sans-serif;
+      font-weight: bold;
+    }
+  
+    label { //rond coulissant
+      display: block;
+      width: 35%;
+      height: 80%;
+      cursor: pointer;
+      position: absolute;
+      top: 3px;
+      left: 5px;
+      z-index: 1;
+      background: #fcfff4;
+      border-radius: 50px;
+      transition: all 0.5s ease;
+      box-shadow: 0px 2px 5px 0px rgba(0,0,0,0.3);
+    }
+  
+    input[type=checkbox] {
+      visibility: hidden;
+
+      &:checked + label { // décalage si validé
+        left: 60%;
+      }
+    }  
+}   

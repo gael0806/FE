@@ -1,0 +1,53 @@
+<main>
+  <div id="background">
+    <div>
+      <div id="titre">
+        <h1>{{zone.name}}</h1>
+        <h2>{{zone.description}}</h2>
+      </div>
+      <div id="content" *ngIf="zone">
+        <div *ngFor="let dispositif of zone.dispositifs">
+
+          <form>
+            <div *ngIf="dispositif.etat==0&&dispositif.type.id==3">
+              <div class="img"><img src={{dispositif.type.logo_disactivated}} alt="logo_disactivated"></div>
+            </div>
+            <div *ngIf="dispositif.etat==1&&dispositif.type.id==3">
+              <div class="img"><img src={{dispositif.type.logo_activated}} alt="logo_activated"></div>
+            </div>
+            <div *ngIf="dispositif.type.id==2">
+              <div class="img"><img src={{dispositif.type.logo_activated}} alt="logo_activated"></div>
+            </div>
+            <div *ngIf="dispositif.type.id==1">
+              <div class="img"><img src={{dispositif.type.logo_activated}} alt="logo_activated"></div>
+            </div>
+            <div *ngIf="dispositif.etat==0&&dispositif.type.id==5">
+              <div class="img"><img src={{dispositif.type.logo_disactivated}} alt="logo_disactivated"></div>
+            </div>
+            <div *ngIf="dispositif.etat==1&&dispositif.type.id==5">
+              <div class="img"><img src={{dispositif.type.logo_activated}} alt="logo_activated"></div>
+            </div>
+            <label>{{dispositif.name}}</label>
+            <div>{{dispositif.description}}</div>
+            <div *ngIf="dispositif.type.id == 1 || dispositif.type.id == 2">
+              <p>{{dispositif.etat}}</p>
+              <a (click)="capteurGet(dispositif)"><div class="bbb">mise à jour</div></a>
+            </div>
+            <div *ngIf="dispositif.type.id !==1 && dispositif.type.id !== 2">
+              <a (click)="dispositifPost(dispositif)">
+                <div *ngIf="dispositif.etat==0">
+                  <div class="bbb">Allumer</div>
+                </div>
+                <div *ngIf="dispositif.etat==1">
+                  <div class="bbb">Eteindre</div>
+                </div>
+              </a>
+            </div>
+          </form>
+
+        </div>
+
+      </div>
+    </div>
+  </div>
+</main>

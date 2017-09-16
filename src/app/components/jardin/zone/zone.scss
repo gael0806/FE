@@ -1,0 +1,45 @@
+.zone {
+    background-color: #2C8DB8;
+    box-shadow: 0 5px 10px 0 rgba(0, 0, 0, 0.3);
+    border-radius: 20px;
+    height: 400px;
+	width: 250px;
+	margin-top: 10px;
+	margin-bottom: 10px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    color: white;
+}
+
+h2 {
+    font-weight: bold;
+    font-size: 30px;
+}
+
+h3 {
+    font-size: 25px;
+}
+
+select {
+    height: 25px;
+    width: 80%;
+    border-radius: 10px;
+}
+
+p {
+    text-align: justify;
+    max-height: 100px;
+    width: 80%;
+    overflow-y: auto;
+    font-size: 15px;
+}
+
+.name {
+    font-size: 20px;
+    height: 30px;
+    overflow: hidden;
+    text-align: center;
+}

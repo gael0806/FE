@@ -1,0 +1,13 @@
+
+<form class="zone" >
+    <h2>Zone {{idzone}}</h2>
+    <p class="name" >{{name}}</p>
+    <p>{{description}}</p>
+    <h3>--Contrôle manuel--</h3>
+    <app-bouton-on-off (valueChange)="envoyerEtat($event);" ></app-bouton-on-off>
+    <h3>----Scénario----</h3>
+    <select class="scenario" (change)="setScenario($event);">
+        <option *ngFor="let scenario of dispositifs[0].scenari" [value]="scenario.id">{{scenario.id}} - {{scenario.name}}</option>
+    </select>
+    <app-bouton-on-off *ngIf="dispositifs[0].scenari" (valueChange)="envoyerScenario($event);"></app-bouton-on-off>
+</form>

@@ -1,0 +1,92 @@
+.pageContent {
+    background-image: url("/assets/images/background-config.png");
+    min-height: 500px;
+    border: 1px solid blue;
+    text-align: center;
+    display : flex;
+    flex-direction: column;
+    flex-wrap : wrap;
+}
+
+//titre de la page-----------------
+h2 { 
+    height: 50px;
+    text-align: center;
+    color : #FFFFFF;
+    background: #8BC34A;   
+    font-family: Raleway-Black;
+    font-size: 30px;
+}
+
+h3 {
+    min-height: 15px;
+    text-align: center;
+    color : green;
+    background: #8BC34A;   
+    font-family: Raleway-Black;
+    font-size: 30px;
+}
+
+main {
+    display : flex;
+    flex-direction: row;
+    flex-wrap : wrap;
+    justify-content : center;
+    min-height: 500px;
+    min-width: 40%;
+
+}
+//menu--------------------------
+#menu {
+    //border: 1px solid black;
+    min-height: 300px;
+    width: 20% ;
+    display: flex;
+    flex-direction: column;
+}
+
+#menu input {
+    margin-bottom: 5px;
+}
+
+#config {
+    width: 75%;
+    background-image: url();
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-attachment: fixed;
+}
+
+.btn {
+  background: #3498db;
+  background-image: -webkit-linear-gradient(top, #3498db, #2980b9);
+  background-image: -moz-linear-gradient(top, #3498db, #2980b9);
+  background-image: -ms-linear-gradient(top, #3498db, #2980b9);
+  background-image: -o-linear-gradient(top, #3498db, #2980b9);
+  background-image: linear-gradient(to bottom, #3498db, #2980b9);
+  -webkit-border-radius: 28;
+  -moz-border-radius: 28;
+  border-radius: 28px;
+  -webkit-box-shadow: 0px 1px 3px #666666;
+  -moz-box-shadow: 0px 1px 3px #666666;
+  box-shadow: 0px 1px 3px #666666;
+  font-family: Arial;
+  color: #ffffff;
+  font-size: 20px;
+  padding: 10px 20px 10px 20px;
+  text-decoration: none;
+  min-width: 70%;
+  margin-bottom: 10px;
+}
+
+.btn:hover {
+  background: #3cfc96;
+  background-image: -webkit-linear-gradient(top, #3cfc96, #16994f);
+  background-image: -moz-linear-gradient(top, #3cfc96, #16994f);
+  background-image: -ms-linear-gradient(top, #3cfc96, #16994f);
+  background-image: -o-linear-gradient(top, #3cfc96, #16994f);
+  background-image: linear-gradient(to bottom, #3cfc96, #16994f);
+  text-decoration: none;
+  color: blueviolet;
+}

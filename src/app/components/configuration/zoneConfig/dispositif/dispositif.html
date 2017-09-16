@@ -1,0 +1,98 @@
+
+<hr>
+<div id="container">
+
+<!--afficher la liste des dispositifs-->  
+  <div class="row">
+    <div class="col-sm-3">
+      <div class=" listeElemnts card card-outline-success mb-3">
+        <div class="card-header card-inverse card-success">
+          Liste de dispositifs
+        </div>
+        <div class="card-block scroll-list">
+          <div class="list-group">
+            <li class=" select list-group-item list-group-item-action list-group-item-success" 
+            [draggable] *ngFor="let item of dispositifs" [dragClass]="'active'"
+              [dragData]="item" [dragScope]="item.name" [dragEnabled]="dragEnabled">
+              {{item.name}}
+            </li>
+          </div>
+        </div>
+      </div>
+    </div>
+
+<!--afficher la liste des dispositifs sélectionés-->
+    <div class="col-sm-6">
+      <div class=" listeElemnts card card-outline-primary mb-3" droppable 
+      [dragOverClass]="'drag-target-border'" [dropScope]="['Lampe', 'Prise', 'Capteur T', 'Capteur H', 'Relai'] "
+        [dragHintClass]="'drag-hint'" (onDrop)="onAnyDrop($event)">
+        <div class="card-header card-inverse card-primary">Dispositifs ajoutés</div>
+        <div class="card-block scroll-list">
+          <li class=" select list-group-item list-group-item-action list-group-item-success" 
+           [draggable] *ngFor="let item of selectedDispositifs; index as i"
+            [dragClass]="'active'" [dragData]="item" [dragScope]="'delete'" 
+            [dragEnabled]="dragEnabled" (click)="openModal(template); transmitItemName($event,item,i)">
+            <div class="selecteditem">{{item.name}}
+              <span *ngIf="item.description !==''" style="color:blue;">: (" {{item.description}} ")</span> 
+              <span *ngIf="item.description ==''" style="color:red;" >: (" clicker pour configurer ")</span> </div>
+          </li>
+        </div>
+      </div>
+    </div>
+    <!--Supprimer un dispositif de la liste-->
+ <div class="col-sm-3">
+      <div *ngIf="selectedDispositifs.length>=1" class=" supprime card card-inverse card-primary mb-3 text-center" droppable [dragHintClass]="'drag-hint-scale'" [dragOverClass]="'bg-danger'"
+        [dropScope]="'delete'" (onDrop)="onDeleteDrop($event)">
+        <div class="card-block">
+          <blockquote class="card-blockquote">
+            <h4 class="card-title"><i class="fa fa-trash" aria-hidden="true"></i> Déposer pour supprimer</h4>
+          </blockquote>
+        </div>
+      </div>
+    </div>
+  </div>
+  </div>
+
+<!--Configurer un dispositf-->
+
+<ng-template #template>
+      <div class="modal-header">
+        <h4 class="modal-title pull-left">Configuration d'un dispositif : ""</h4>
+        <button type="button" class="close pull-right" (click)="modalRef.hide()" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div>
+          <form (ngSubmit)="register(dispoForm.value)" #dispoForm="ngForm">
+            <div id="titre">Configuration du dispositif {{selectedDispo.name}}</div>
+            <div>
+              <label>Nom</label>
+              <input class="inputlogin" type="text" name="name" [(ngModel)]="selectedDispo.name">
+            </div>
+            <div class="divmdp">
+              <label>Déscription</label>
+              <input class="inputlogin" type="text" name="description" [(ngModel)]="selectedDispo.description">
+              <input class="inputlogin" type="number" min="0"  name="type" [(ngModel)]="selectedDispo.type" hidden>
+            </div>            
+            <div class="divmdp">
+              <label>N° Arduino</label>
+              <input class="inputlogin" type="number" min="0"  name="arduinoNbr" [(ngModel)]="selectedDispo.arduinoNbr">
+            </div>
+            <div class="divmdp">
+              <label>Pin de sortie</label>
+              <input class="inputlogin" type="number" min="0"  name="pin" [(ngModel)]="selectedDispo.pin">
+            </div>
+            <div class="divmdp">
+              <label>Etat</label>
+              <input class= "select" type="radio" name="etat" value="0" [(ngModel)]="selectedDispo.etat"> OFF
+              <input class= "select" type="radio" name="etat" value="1" [(ngModel)]="selectedDispo.etat" > ON<br>
+            </div>
+            <div>
+              <input class=" select buttonform" type="submit" value="Enregistrer" (click)="modalRef.hide()">
+             <input class="select buttonform" (click)="modalRef.hide()" type="button" value="Annuler">
+            </div>
+          </form>
+        </div>
+  </div>
+</ng-template>

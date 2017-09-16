@@ -1,0 +1,128 @@
+header {
+    background: #689F38;
+    color: #FFFFFF; 
+    text-align: center;
+    font-size: 20px;
+    font-weight: bold;
+}
+
+section {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    align-items : center;
+    min-height: 700px;
+    background-image: url("/assets/images/backgroundflat.png");
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-attachment: fixed;
+
+}
+
+#maison{
+    width: 50%;
+    min-width: 400px;
+    max-width: 650px;
+    height: 650px;
+    background-image: url("/assets/images/maison-background.png");
+    background-repeat: no-repeat;
+    background-size:85%;
+    background-position: center center;
+    overflow: auto;
+    
+}
+
+#centrer{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    align-items: flex-start;
+   // margin-top:50px;
+   // margin-left: 50px;
+   // margin-right : 50px; 
+
+    margin-top: 295px;
+    margin-left: 118px;
+    margin-right: 48px;
+    max-width: 460px;
+
+}
+
+#jardin {
+    display : flex;
+    width: 50%;
+    min-width: 400px;
+    max-width: 500px;
+    justify-content: center;
+    align-items:flex-start;
+    background-image: url("/assets/images/sprinkler2.png");
+    background-size:70% ;
+    background-position: center center;
+    background-repeat: no-repeat;
+}
+
+#centrer a {
+    text-align: center;
+    text-decoration: none;
+    font-weight: bold;
+    margin : 10px;
+    width: 100px;
+    padding-top: 40px;
+    padding-bottom: 40px;
+    color: #FFFFFF;
+    background: #2ecc71;
+    box-shadow: 0 1px 5px 0 rgba(0, 0, 0, 0.3);
+    border-radius: 10px;
+    transition: 0.3s;
+}
+
+#centrer a:hover {
+    background: #FFFFFF;
+    color: #2ecc71;
+    box-shadow: 0 5px 10px 0 rgba(0, 0, 0, 0.3);
+}
+
+//scrollbar de maison
+#maison::-webkit-scrollbar-track{
+	box-shadow: inset 0 0 6px rgba(0,0,0,0.2);
+	border-radius: 10px;
+}
+
+#maison::-webkit-scrollbar{
+	width: 10px;
+	background-color : transparent;
+}
+
+#maison::-webkit-scrollbar-thumb{
+	border-radius: 10px;
+	background-color: #FFF;
+	background-image: -webkit-gradient(linear,
+									   40% 0%,
+									   75% 84%,
+									   from(#4D9C41),
+									   to(#19911D),
+									   color-stop(.6,#53DE5C))
+}
+
+
+#jardin a {
+    margin-top : 50px;
+    padding-top : 300px;
+    padding-bottom: 25px;
+    text-align: center;
+    text-decoration: none;
+    color: #FFFFFF;
+    font-size: 70px;
+    font-weight: bold;
+    width: 70%; 
+    transition: all 0.2s;
+    opacity: 0.85;
+    border-radius: 20px;
+}
+
+#jardin a:hover {
+    border : solid 5px #FFFFFF;
+    box-shadow: 0 5px 10px 0 rgba(0, 0, 0, 0.3);
+    background: rgba(255,255,255,0.2)
+ }

@@ -1,0 +1,68 @@
+<div id="mainzone">
+  <div id="ajoutzone">
+    <h3>Configuration des Zones</h3>
+    <input type="button" class="btn" value="Ajouter une zone" (click)="AddZone()">
+  </div>
+  <div id="parametreszones">
+    <!--Afficher la liste des zones -->
+    <div class="select zone" [draggable] *ngFor="let item of zones; index as i" [dragClass]="'active'" [dragData]="item" [dragScope]="'delete'"
+      [dragEnabled]="dragEnabled" (click)="lgModal.show(); transmitItemName($event,item,i)">
+      <div> <img src="/assets/images/zoneConfig.jpg" alt="Zone"> </div>
+      <div><span *ngIf="item.name ==''">Zone: {{i+1}}</span> <span *ngIf="item.name !==''"> {{item.name}}</span></div>
+    </div>
+  </div>
+
+  <!--Supprimer un zone -->
+  <div class="container">
+    <div class="row" *ngIf="zones.length>=1">
+      <div class="col-sm-9"></div>
+      <div class="col-sm-3">
+        <div class="card card-inverse card-primary mb-3 text-center" droppable [dragHintClass]="'drag-hint-scale'" [dragOverClass]="'bg-danger'"
+          [dropScope]="'delete'" (onDrop)="onDeleteDrop($event)">
+          <div class="card-block">
+            <blockquote class="card-blockquote">
+              <h4 class="card-title"><i class="fa fa-trash" aria-hidden="true"></i> Déposer pour supprimer</h4>
+              <p class="card-text">Déposer un élément ici pour le supprimer</p>
+            </blockquote>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+
+
+<!--Configurer un dispositf-->
+<div bsModal #lgModal="bs-modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title pull-left">Configuration de la zone {{selectedIndex+1}}</h4>
+        <button type="button" class="close pull-right" (click)="lgModal.hide()" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form  #zoneForm="ngForm">
+          <h3>Configuration de la zone: {{selectedZone.name}}</h3>
+          <div class="divmdp">
+              <label>Nom de la zone</label>
+              <input class="inputlogin" type="text" name="name" [(ngModel)]="selectedZone.name">
+            </div>
+            <div class="divmdp">
+              <label>Déscription</label>
+              <input class="inputlogin" type="text" name="description" [(ngModel)]="selectedZone.description">
+            </div>            
+        </form>
+        <h3>Ajouter des dispositifs</h3>
+        <app-dispositif [selectedZ]="selectedZone"> </app-dispositif>
+        <!-->ajouter [selectedZone]</!-->
+        <input class=" select buttonform" (click)="lgModal.hide(); register(zoneForm.value)" type="button" value="Enregistrer">
+        <input class=" select buttonform" (click)="lgModal.hide()" type="button" value="Annuler">
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,82 @@
+<div id="mainutilisateur">
+    <div id="ajoututil">
+        <h3>Configuration des utilisateur </h3>
+        <input type="button" class="btn" value="Ajouter un utilisateur" (click)="AddUser()">
+    </div>
+    <div id="parametresutilisateurs">
+
+
+        <!--Afficher la liste des utilisateurs -->
+        <div class="user select" [draggable] *ngFor="let item of users; index as i" [dragClass]="'active'" [dragData]="item" [dragScope]="'delete'"
+            [dragEnabled]="dragEnabled" (click)="lgModal.show(); transmitItemName($event,item,i)">
+            <div *ngIf="item.admin !=true"> <img src="/assets/images/user.jpg" alt="user"> </div>
+            <div *ngIf="item.admin ==true "> <img src="/assets/images/userAdmin.png" alt="user"> </div>
+            <div><span *ngIf="item.name ==''">Utilisateur: {{i+1}}</span> <span *ngIf="item.name !==''"> {{item.name}}</span></div>
+        </div>
+    </div>
+
+    <!--Supprimer un utilisateur -->
+    <div class="container">
+        <div class="row" *ngIf="users.length>=1">
+             <div class="col-sm-9"></div>
+            <div class="col-sm-3">
+                <div class="card card-inverse card-primary mb-3 text-center" droppable 
+                [dragHintClass]="'drag-hint-scale'" [dragOverClass]="'bg-danger'"
+                    [dropScope]="'delete'" (onDrop)="onDeleteDrop($event)">
+                    <div class="card-block">
+                        <blockquote class="card-blockquote">
+                            <h4 class="card-title"><i class="fa fa-trash" aria-hidden="true"></i> Déposer pour supprimer</h4>
+                            <p class="card-text">Déposer un élément ici pour le supprimer</p>
+                        </blockquote>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+<!-- Configurer les utilisateurs -->
+<div bsModal #lgModal="bs-modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title pull-left">Configuration des utilisateur</h4>
+                <button type="button" class="close pull-right" (click)="lgModal.hide()" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+            </div>
+            <div class="modal-body">
+                <div>
+                    <form (ngSubmit)="register(userForm.value)" #userForm="ngForm">
+                        <div id="titre">
+                            Configuration utilisateur: {{selectedUser.name}}
+                        </div>
+                        <div>
+                            <label> Nom </label>
+                            <input class="inputlogin" type="text" name="name" [(ngModel)]="selectedUser.name">
+                        </div>
+                        <div>
+                            <label> Login </label>
+                            <input class="inputlogin" type="text" name="login" [(ngModel)]="selectedUser.login">
+                        </div>
+                        <div>
+                            <label>Mot de Passe</label>
+                            <input class="inputlogin" type="text" name="password" [(ngModel)]="selectedUser.password">
+                        </div>
+                        <div>
+                            <label>Administrateur</label>
+                            <input class="select inputlogin" type="checkbox" name="admin" [(ngModel)]="selectedUser.admin">
+                        </div>
+                        <div>
+                            <input class="select buttonform" type="submit" value="Enregistrer" (click)="lgModal.hide()">
+                            <input class="select buttonform" (click)="lgModal.hide()" type="button" value="Annuler">
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

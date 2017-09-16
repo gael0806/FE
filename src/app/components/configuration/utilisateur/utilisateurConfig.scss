@@ -1,0 +1,165 @@
+
+// Zone des paramètress-------------------
+#mainutilisateur {
+    min-height: 500px;
+    max-width: 1200px;
+
+}
+
+#ajoututil{
+margin-bottom: 50px;
+
+}
+
+#parametresutilisateurs {
+    display: flex;
+    flex-wrap: wrap;
+    min-height: 60px;
+    max-width: 100%;
+}
+
+.user {
+    margin-left: 30px;
+    margin-bottom: 20px;
+    color : rgb(75, 249, 7);
+    font-family: Raleway-Black;
+     font-size: 18px;
+}
+
+img{
+    height :100px;
+    width : 100px;
+}
+
+h3 {
+    min-height: 15px;
+    text-align: center;
+    color : blueviolet;
+    background: #8BC34A;   
+    font-family: Raleway-Black;
+    font-size: 30px;
+    margin-bottom: 5px;
+}
+
+.btn {
+     -webkit-border-radius: 12;
+    -moz-border-radius: 12;
+     border-radius: 12px;
+    -webkit-box-shadow: 2px 2px 6px #666666;
+     -moz-box-shadow: 2px 2px 6px #666666;
+     box-shadow: 2px 2px 6px #666666;
+    font-family: Arial;
+     color: #ffffff;
+     font-size: 20px;
+     background: #089919;
+      padding: 10px 20px 10px 20px;
+     text-decoration: none;
+}
+
+.btn:hover {
+  background: #fa3c72;
+  background-image: -webkit-linear-gradient(top, #fa3c72, #99177f);
+  background-image: -moz-linear-gradient(top, #fa3c72, #99177f);
+  background-image: -ms-linear-gradient(top, #fa3c72, #99177f);
+  background-image: -o-linear-gradient(top, #fa3c72, #99177f);
+  background-image: linear-gradient(to bottom, #fa3c72, #99177f);
+  text-decoration: none;
+}
+
+
+.select{
+    cursor: pointer;
+}
+/* MODAL */
+form {
+  margin-top: 30px;
+}
+
+label {
+  display: inline-block;
+  width: 30%;
+}
+
+.inputlogin {
+  width: 65%;
+}
+
+#divmdp {
+  margin-top :10px;
+  margin-bottom : 10px;
+}
+
+.buttonform{
+  margin-left:20px;
+  padding:10px;
+  background: #8BC34A;
+  border: solid 2px #8BC34A;
+  border-radius : 10px;
+  font-size: 15px;
+  text-decoration: none;
+  color : #FFFFFF;
+  font-weight: bold;
+  transition : all 0.3s;
+}
+
+.buttonform:hover {
+  background: #FFFFFF;
+  color: #8BC34A;
+}
+
+.modalDialog {
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 99999;
+    opacity:0;
+    -webkit-transition: opacity 200ms ease-in;
+    -moz-transition: opacity 200ms ease-in;
+    transition: opacity 200ms ease-in;
+    pointer-events: none;
+}
+.modalDialog:target {
+    opacity:1;
+    pointer-events: auto;
+}
+.modalDialog > div {
+    width: 400px;
+    position: relative;
+    margin-top:5%;
+    margin-left:auto;
+    margin-right: auto;  
+    padding: 5px 20px 13px 20px;
+    border-radius: 10px;
+    background: #fff;
+}
+.close {
+    background: #606061;
+    color: #FFFFFF;
+    line-height: 25px;
+    position: absolute;
+    right: -12px;
+    text-align: center;
+    top: -10px;
+    width: 24px;
+    text-decoration: none;
+    font-weight: bold;
+    -webkit-border-radius: 12px;
+    -moz-border-radius: 12px;
+    border-radius: 12px;
+    -moz-box-shadow: 1px 1px 3px #000;
+    -webkit-box-shadow: 1px 1px 3px #000;
+    box-shadow: 1px 1px 3px #000;
+}
+.close:hover {
+    background: #00d9ff;
+}
+
+#titre{
+    font-size: 30px;
+    font-weight: bold;
+    margin: 40px;
+}
+
